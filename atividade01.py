@@ -41,6 +41,31 @@ def mostrar():
         except:
             input("Índice inválido!")
             mostrar()
+
+def remover():
+    if len(lst_nome_produto) == 0:
+        input("Nenhum produto cadastrado! [ENTER]")
+    else:
+        print("----------------------------------------")
+        print("indice - nome")
+        for x in range(len(lst_nome_produto)):
+            print(str(x).ljust(9," ") + lst_nome_produto[x])
+        try:
+            indice = int(input("Digite o índice do produto a remover: "))
+            for y in range(len(lst_nome_produto)):
+                if y == indice:
+                    flag = 1
+            if flag == 1:
+                del lst_nome_produto[indice]
+                del lst_preco_produto[indice]
+                del lst_qtde_produto[indice]
+                input("Produto removido com sucesso![ENTER]")
+            else:
+                input("Índice não está na lista! [ENTER]")
+                remover()
+        except:
+            input("Índice inválido! [ENTER]")
+            remover()    
                   
 lst_nome_produto = []
 lst_preco_produto = []
@@ -59,7 +84,7 @@ while True:
     if menu == '2':
         mostrar()
     if menu == '3':
-        pass
+        remover()
     if menu == '4':
         break
     
